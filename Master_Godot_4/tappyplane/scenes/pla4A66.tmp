@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmf6ctn3uuwsn"]
+
+[ext_resource type="Script" path="res://scripts/plane.gd" id="1_h3v2c"]
+[ext_resource type="SpriteFrames" uid="uid://bc81bj8rklsx8" path="res://assets/plane/plane_frames.tres" id="1_yamcm"]
+[ext_resource type="AudioStream" uid="uid://b5qthjvssympj" path="res://assets/audio/engine.mp3" id="2_b5mvt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0s4w"]
+resource_local_to_scene = true
+radius = 31.1448
+
+[node name="Plane" type="CharacterBody2D"]
+script = ExtResource("1_h3v2c")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_yamcm")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.862692
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_x0s4w")
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_b5mvt")
+autoplay = true
