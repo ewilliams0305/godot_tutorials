@@ -25,7 +25,7 @@ paddle_delta = 50
 wait_time = 2.0
 autostart = true
 
-[node name="Score" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 offset_left = 9.0
 offset_top = -3.0
 offset_right = 193.0
@@ -37,22 +37,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 48
-text = "SCORE: 000"
-
-[node name="Lives" type="Label" parent="."]
-offset_left = 788.0
-offset_top = -3.0
-offset_right = 1140.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.973772, 0.415454, 0.426733, 1)
-theme_override_colors/font_shadow_color = Color(0.529705, 0.574749, 0.964221, 1)
-theme_override_colors/font_outline_color = Color(0.792917, 0.891616, 0.366884, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 48
-text = "LIVES: 3"
-horizontal_alignment = 2
+text = "00000"
 
 [node name="music_bg" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_y5ave")
