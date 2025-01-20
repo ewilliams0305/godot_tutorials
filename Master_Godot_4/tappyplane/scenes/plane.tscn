@@ -46,7 +46,7 @@ _data = {
 "pull_up": SubResource("Animation_od7ax")
 }
 
-[node name="Plane" type="CharacterBody2D"]
+[node name="Plane" type="CharacterBody2D" groups=["Plane"]]
 position = Vector2(-1, 0)
 script = ExtResource("1_h3v2c")
 
@@ -65,9 +65,10 @@ libraries = {
 "": SubResource("AnimationLibrary_jsps3")
 }
 
-[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="." groups=["Plane"]]
 stream = ExtResource("2_b5mvt")
 autoplay = true
+parameters/looping = true
 
 [node name="SoundTImer" type="Timer" parent="."]
 wait_time = 0.5

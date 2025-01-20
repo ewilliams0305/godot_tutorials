@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="TappyPlane"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalManager="*res://state/signal_manager.gd"
+GameManager="*res://state/game_manager.gd"
+ScoreManager="*res://state/score_manager.gd"
 
 [display]
 
@@ -26,6 +32,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="TappyPlane"
+
+[global_group]
+
+Plane=""
 
 [input]
 

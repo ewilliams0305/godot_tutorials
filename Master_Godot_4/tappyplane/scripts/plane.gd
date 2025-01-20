@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+class_name Tappy
+
 const GRAVITY: float = 1000.0
 const POWER: float = 350.0
+
 
 @onready var engine_sound: AudioStreamPlayer2D = $EngineSound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,6 +31,7 @@ func die() -> void:
 	engine_sound.stream = EXPLODE
 	engine_sound.play()
 	set_physics_process(false)
+	SignalManager.on_plane_die.emit()
 	
 func _physics_process(delta: float) -> void:
 

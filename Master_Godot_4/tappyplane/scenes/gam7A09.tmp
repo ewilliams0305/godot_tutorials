@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdukvh0ffd5ut"]
+[gd_scene load_steps=5 format=3 uid="uid://bdukvh0ffd5ut"]
 
 [ext_resource type="Texture2D" uid="uid://41e8dqiwd78v" path="res://assets/background/rocks_2.png" id="1_1sngc"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5ebh5"]
 [ext_resource type="PackedScene" uid="uid://bmf6ctn3uuwsn" path="res://scenes/plane.tscn" id="2_kchva"]
 [ext_resource type="PackedScene" uid="uid://o1nqchxl77mx" path="res://scenes/barrier.tscn" id="3_2m3qt"]
-[ext_resource type="PackedScene" uid="uid://en1wg1fxcu4d" path="res://scenes/game_over.tscn" id="5_vxv4r"]
-[ext_resource type="PackedScene" uid="uid://dnt3v4dh0ml3n" path="res://scenes/hud.tscn" id="6_0neyd"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(131, 355)
@@ -36,12 +34,5 @@ autostart = true
 
 [node name="PipesHolder" type="Node2D" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="GameOver" parent="UI" instance=ExtResource("5_vxv4r")]
-
-[node name="Hud" parent="UI" instance=ExtResource("6_0neyd")]
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
+[connection signal="on_plane_die" from="Plane" to="." method="_on_plane_die"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
