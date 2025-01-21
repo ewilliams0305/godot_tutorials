@@ -1,17 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdukvh0ffd5ut"]
+[gd_scene load_steps=12 format=3 uid="uid://bdukvh0ffd5ut"]
 
 [ext_resource type="Texture2D" uid="uid://41e8dqiwd78v" path="res://assets/background/rocks_2.png" id="1_1sngc"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5ebh5"]
 [ext_resource type="PackedScene" uid="uid://bmf6ctn3uuwsn" path="res://scenes/plane.tscn" id="2_kchva"]
+[ext_resource type="PackedScene" uid="uid://dnqipljc8i8ys" path="res://scenes/scrolling_bg.tscn" id="2_qojbj"]
 [ext_resource type="PackedScene" uid="uid://o1nqchxl77mx" path="res://scenes/barrier.tscn" id="3_2m3qt"]
+[ext_resource type="PackedScene" uid="uid://d0tjhinw3sjdu" path="res://scenes/parallax_bg.tscn" id="3_nf0m5"]
+[ext_resource type="Texture2D" uid="uid://cgu8gx8jfwoqn" path="res://assets/background/sky.png" id="4_duayd"]
+[ext_resource type="Texture2D" uid="uid://cv0v6vgtl5edx" path="res://assets/background/clouds_2.png" id="5_22xxp"]
 [ext_resource type="PackedScene" uid="uid://en1wg1fxcu4d" path="res://scenes/game_over.tscn" id="5_vxv4r"]
 [ext_resource type="PackedScene" uid="uid://dnt3v4dh0ml3n" path="res://scenes/hud.tscn" id="6_0neyd"]
+[ext_resource type="Texture2D" uid="uid://dskkc4indty35" path="res://assets/background/rocks_1.png" id="6_fy8r8"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(131, 355)
 script = ExtResource("1_5ebh5")
 
+[node name="ScrollingBg" parent="." instance=ExtResource("2_qojbj")]
+visible = false
+
+[node name="Parallax" type="Node2D" parent="."]
+position = Vector2(0, 70)
+
+[node name="ParallaxBg1" parent="Parallax" instance=ExtResource("3_nf0m5")]
+scroll_scale = Vector2(0, 0)
+texture = ExtResource("4_duayd")
+
+[node name="ParallaxBg2" parent="Parallax" instance=ExtResource("3_nf0m5")]
+scroll_scale = Vector2(0.3, 0.3)
+autoscroll = Vector2(-20, 0)
+texture = ExtResource("5_22xxp")
+
+[node name="ParallaxBg3" parent="Parallax" instance=ExtResource("3_nf0m5")]
+scroll_scale = Vector2(0.5, 0.5)
+autoscroll = Vector2(-50, 0)
+texture = ExtResource("6_fy8r8")
+
+[node name="ParallaxBg4" parent="Parallax" instance=ExtResource("3_nf0m5")]
+scroll_scale = Vector2(0.7, 0.7)
+autoscroll = Vector2(-75, 0)
+texture = ExtResource("1_1sngc")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(653, 0)
 texture = ExtResource("1_1sngc")
 
