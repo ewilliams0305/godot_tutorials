@@ -48,6 +48,7 @@ _data = {
 
 [node name="Plane" type="CharacterBody2D" groups=["Plane"]]
 position = Vector2(-1, 0)
+collision_layer = 8
 script = ExtResource("1_h3v2c")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
