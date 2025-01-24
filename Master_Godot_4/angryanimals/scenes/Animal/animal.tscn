@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gak5ao1iw7b"]
+
+[ext_resource type="Texture2D" uid="uid://tm4jm2bur7mi" path="res://assets/player/parrot.png" id="1_n7gpi"]
+[ext_resource type="Script" path="res://scenes/Animal/animal.gd" id="1_vhw68"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tnv7"]
+radius = 19.0
+
+[node name="Animal" type="RigidBody2D"]
+input_pickable = true
+freeze = true
+script = ExtResource("1_vhw68")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_n7gpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1tnv7")
+
+[node name="VisibleOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.36442e-07, 2.38419e-07)
+scale = Vector2(2.1, 2.1)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -42.0
+offset_right = 29.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "DEBUG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_exited"]

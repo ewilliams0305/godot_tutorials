@@ -11,13 +11,29 @@ config_version=5
 [application]
 
 config/name="AngryAnimals"
-run/main_scene="res://scenes/tester/tester.tscn"
+run/main_scene="res://scenes/level/level.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalManager="*res://state/signal_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="AngryAnimals"
+
+[input]
+
+drag={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(175, 11),"global_position":Vector2(184, 57),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 
