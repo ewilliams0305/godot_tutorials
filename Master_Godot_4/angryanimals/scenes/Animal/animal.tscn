@@ -1,14 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0gak5ao1iw7b"]
+[gd_scene load_steps=9 format=3 uid="uid://b0gak5ao1iw7b"]
 
 [ext_resource type="Texture2D" uid="uid://tm4jm2bur7mi" path="res://assets/player/parrot.png" id="1_n7gpi"]
 [ext_resource type="Script" path="res://scenes/Animal/animal.gd" id="1_vhw68"]
+[ext_resource type="Texture2D" uid="uid://bxaqb2gtqysey" path="res://assets/items/arrow.png" id="3_cxt7m"]
+[ext_resource type="AudioStream" uid="uid://lkeow3xp8c68" path="res://assets/audio/stretch2.ogg" id="4_pu7ns"]
+[ext_resource type="AudioStream" uid="uid://y7g3lidd27ca" path="res://assets/audio/catapult.ogg" id="5_itcqb"]
+[ext_resource type="AudioStream" uid="uid://v740n6x8bx4j" path="res://assets/audio/kick_wood.ogg" id="6_ww1yh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j5221"]
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tnv7"]
 radius = 19.0
 
 [node name="Animal" type="RigidBody2D"]
 input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_j5221")
 freeze = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_vhw68")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,14 +34,30 @@ scale = Vector2(2.1, 2.1)
 
 [node name="Debug" type="Label" parent="."]
 offset_left = -26.0
-offset_top = -42.0
+offset_top = -51.0
 offset_right = 29.0
-offset_bottom = -19.0
+offset_bottom = -24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "DEBUG"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Arrow" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cxt7m")
+offset = Vector2(150, 0)
+
+[node name="StretchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pu7ns")
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_itcqb")
+
+[node name="KickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ww1yh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier" to="." method="_on_visible_on_screen_notifier_screen_exited"]

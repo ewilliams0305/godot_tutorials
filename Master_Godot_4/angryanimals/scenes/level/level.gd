@@ -1,6 +1,7 @@
 extends Node2D
 
 const ANIMAL = preload("res://scenes/Animal/animal.tscn")
+const MAIN = preload("res://scenes/ui/main.tscn")
 
 @onready var animal_start: Marker2D = $AnimalStart
 @onready var create_animal_timer: Timer = $CreateAnimalTimer
@@ -11,7 +12,9 @@ func _ready() -> void:
 	create_animal()
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_key_pressed(KEY_ESCAPE):
+		print("Exit to Main")
+		get_tree().change_scene_to_packed(MAIN)
 	
 func create_animal() -> void :
 	var animal: Animal = ANIMAL.instantiate()
